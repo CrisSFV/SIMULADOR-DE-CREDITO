@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crédito Personal Banamex y TOP UP</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- CABECERA -->
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-logo">
+          <span class="brand-b"></span><strong>Crispy</strong><span class="brand-flower">✿</span>
+        </div>
+      </div>
+      <h1 class="page-title">CRÉDITO PERSONAL BANAMEX y TOP UP</h1>
+    </div>
+
+    <!-- PANEL PRINCIPAL -->
+    <div class="main-panel">
+
+      <!-- COLUMNA IZQUIERDA: DATOS DEL CRÉDITO -->
+      <div class="left-col">
+        <div class="section-title">DATOS DEL CRÉDITO</div>
+
+        <div class="form-table">
+
+          <!-- Nombre -->
+          <div class="form-row">
+            <label>Nombre del cliente:</label>
+            <input type="text" id="nombre" class="input-yellow" placeholder="Nombre completo" value="PETRA NORMA GONZALEZ GARCIA">
+          </div>
+
+          <!-- Monto autorizado -->
+          <div class="form-row">
+            <label>Monto autorizado:</label>
+            <div class="inline-group">
+              <input type="number" id="monto" class="input-yellow input-money" value="80000" min="5000" step="1000">
+              <span class="derived-val" id="monto-comision-display">$0.00</span>
+            </div>
+          </div>
+
+          <!-- Comisión apertura -->
+          <div class="form-row">
+            <label>Comisión por apertura con IVA:</label>
+            <select id="comision" class="input-yellow input-select">
+              <option value="0">0%</option>
+              <option value="0.01" selected>1%</option>
+              <option value="0.02">2%</option>
+              <option value="0.03">3%</option>
+            </select>
+          </div>
+
+          <!-- Total a financiar -->
+          <div class="form-row">
+            <label>Total a financiar:</label>
+            <input type="text" id="total-financiar" class="input-derived" readonly>
+          </div>
+
+          <!-- Plazo -->
+          <div class="form-row">
+            <label>Plazo del crédito:</label>
+            <div class="inline-group">
+              <select id="plazo" class="input-yellow input-select">
+                <option value="12">12 meses</option>
+                <option value="24">24 meses</option>
+                <option value="36" selected>36 meses</option>
+                <option value="48">48 meses</option>
+              </select>
+              <span class="ppm-label">Pago por mil:</span>
+              <span class="derived-val ppm-val" id="pago-por-mil">$0.00</span>
+            </div>
+          </div>
+
+          <!-- Tasa de interés -->
+          <div class="form-row">
+            <label>Tasa de interés anual:</label>
+            <select id="tasa" class="input-yellow input-select">
+              <option value="18">18%</option>
+              <option value="20">20%</option>
+              <option value="22" selected>22%</option>
+              <option value="24">24%</option>
+              <option value="26">26%</option>
+              <option value="28">28%</option>
+              <option value="30">30%</option>
+              <option value="34">34%</option>
+            </select>
+          </div>
+
+          <!-- CAT -->
+          <div class="form-row">
+            <label>CAT (Costo Anual Total):</label>
+            <input type="text" id="cat-display" class="input-derived" readonly>
+          </div>
+
+        </div><!-- /form-table -->
+
+        <!-- BOTÓN CALCULAR -->
+        <div class="btn-row">
+          <button id="btn-calcular" onclick="procesarSimulacion()">VER TABLA</button>
+          <button id="btn-limpiar" onclick="limpiarTabla()">LIMPIAR</button>
+        </div>
+
+      </div><!-- /left-col -->
+
+      <!-- COLUMNA DERECHA: NOTA INSTITUCIONAL -->
+      <div class="right-col">
+        <div class="nota-box">
+          <p>El monto otorgado puede variar dependiendo de la capacidad de pago del cliente</p>
+        </div>
+        <div class="nota-tasa">
+          <p>La tasa de interés es de referencia, la tasa se otorga en base a evaluación crediticia</p>
+        </div>
+      </div>
+
+    </div><!-- /main-panel -->
+
+    <!-- NOTAS TOP UP -->
+    <div class="topup-bar">
+      <strong>Recuerda que Top Up <u>no</u> cobra comisión por apertura (0%)</strong>
+    </div>
+
+    <div class="notas-section">
+      <strong>Notas:</strong>
+      <ul>
+        <li>Campos en amarillo son para captura de datos.</li>
+        <li>Elige la comisión, el plazo y la tasa de referencia desplegando los combos.</li>
+        <li>La tasa de interés es de referencia; se otorgará en base a evaluación crediticia.</li>
+        <li>El monto otorgado puede variar dependiendo de la capacidad de pago del cliente.</li>
+        <li>En la tabla de cotización puedes capturar pagos anticipados y ver cómo disminuye tu saldo.</li>
+        <li>Para ver tu cotización presiona el botón <strong>VER TABLA</strong>.</li>
+      </ul>
+    </div>
+
+    <!-- TABLA DE AMORTIZACIÓN -->
+    <div id="tabla-section" style="display:none;">
+      <div class="tabla-header-row">
+        <h2 class="tabla-titulo">TABLA DE AMORTIZACIÓN — COTIZACIÓN</h2>
+        <div class="tabla-cliente-info">
+          <span id="tbl-nombre"></span> &nbsp;|&nbsp;
+          Monto: <span id="tbl-monto"></span> &nbsp;|&nbsp;
+          Plazo: <span id="tbl-plazo"></span> &nbsp;|&nbsp;
+          Tasa: <span id="tbl-tasa"></span> &nbsp;|&nbsp;
+          CAT: <span id="tbl-cat"></span>
+        </div>
+      </div>
+
+      <!-- RESUMEN RÁPIDO -->
+      <div class="resumen-grid">
+        <div class="resumen-card accent">
+          <span class="rc-label">Primer Pago</span>
+          <span class="rc-val" id="r-primer-pago">—</span>
+        </div>
+        <div class="resumen-card">
+          <span class="rc-label">Último Pago</span>
+          <span class="rc-val" id="r-ultimo-pago">—</span>
+        </div>
+        <div class="resumen-card">
+          <span class="rc-label">Total Intereses + IVA</span>
+          <span class="rc-val" id="r-intereses">—</span>
+        </div>
+        <div class="resumen-card">
+          <span class="rc-label">Costo Total del Crédito</span>
+          <span class="rc-val" id="r-total">—</span>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="tabla-amortizacion">
+          <thead>
+            <tr>
+              <th>Período</th>
+              <th>Saldo Inicial</th>
+              <th>Amort. Capital</th>
+              <th>Interés Ordinario</th>
+              <th>IVA (16%)</th>
+              <th>Pago Mensual Total</th>
+              <th>Saldo Final</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /page -->
+
+  <script src="script.js"></script>
+</body>
+</html>
