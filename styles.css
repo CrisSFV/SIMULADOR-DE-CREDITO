@@ -1,0 +1,389 @@
+/* =============================================
+   CRÉDITO PERSONAL BANAMEX — Estilo Corporativo
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --azul-nav:    #003b8e;
+  --azul-titulo: #003b8e;
+  --azul-borde:  #1a4fa0;
+  --rojo:        #cc0000;
+  --amarillo:    #fffaaa;
+  --amarillo-borde: #c8b400;
+  --gris-fondo:  #f2f2f2;
+  --gris-tabla:  #e8e8e8;
+  --blanco:      #ffffff;
+  --negro:       #111111;
+  --texto:       #1a1a1a;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--gris-fondo);
+  color: var(--texto);
+  font-size: 13px;
+  padding: 16px;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--blanco);
+  border: 2px solid var(--azul-borde);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* ── TOP BAR ── */
+.top-bar {
+  background: var(--blanco);
+  padding: 10px 18px 8px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 4px solid var(--azul-nav);
+}
+
+.brand {
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  font-size: 22px;
+  color: var(--azul-nav);
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.brand-logo strong { font-weight: 700; }
+
+.brand-flower {
+  color: var(--rojo);
+  font-size: 20px;
+  margin-left: 2px;
+}
+
+.page-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--azul-titulo);
+  text-align: center;
+  flex: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ── PANEL PRINCIPAL ── */
+.main-panel {
+  display: flex;
+  gap: 0;
+  padding: 16px 18px 12px;
+  border-bottom: 2px solid var(--azul-borde);
+}
+
+.left-col  { flex: 1; min-width: 0; }
+.right-col { width: 220px; flex-shrink: 0; padding-left: 16px; display: flex; flex-direction: column; gap: 12px; justify-content: flex-start; }
+
+/* ── SECCIÓN TITLE ── */
+.section-title {
+  background: var(--azul-nav);
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 10px;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+
+/* ── FORM TABLE ── */
+.form-table { display: flex; flex-direction: column; gap: 9px; }
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-row label {
+  width: 210px;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--texto);
+  text-align: right;
+}
+
+/* ── INPUTS ── */
+.input-yellow {
+  background: var(--amarillo) !important;
+  border: 1px solid var(--amarillo-borde) !important;
+  border-radius: 2px;
+  padding: 4px 7px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  color: var(--negro);
+  font-weight: 700;
+}
+
+.input-yellow:focus {
+  outline: 2px solid var(--azul-nav);
+  outline-offset: 1px;
+}
+
+.input-money { width: 130px; }
+
+.input-select {
+  width: 130px;
+  cursor: pointer;
+}
+
+.input-derived {
+  background: #e8e8e8;
+  border: 1px solid #b0b0b0;
+  border-radius: 2px;
+  padding: 4px 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--negro);
+  width: 150px;
+}
+
+.inline-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.derived-val {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--negro);
+  background: #e8e8e8;
+  border: 1px solid #b0b0b0;
+  padding: 4px 8px;
+  border-radius: 2px;
+  min-width: 80px;
+  text-align: center;
+}
+
+.ppm-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--texto);
+  white-space: nowrap;
+}
+
+.ppm-val { min-width: 70px; }
+
+/* ── BOTONES ── */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  padding-left: 220px;
+}
+
+#btn-calcular {
+  background: var(--azul-nav);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 7px 22px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.15s;
+}
+
+#btn-calcular:hover  { background: #0052c2; }
+#btn-calcular:active { transform: scale(0.98); }
+
+#btn-limpiar {
+  background: #888;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 7px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#btn-limpiar:hover { background: #666; }
+
+/* ── NOTAS DERECHA ── */
+.nota-box, .nota-tasa {
+  border: 2px solid var(--rojo);
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--negro);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ── TOP UP BAR ── */
+.topup-bar {
+  background: #fff8f8;
+  border-top: 1px solid #ffcccc;
+  border-bottom: 1px solid #ffcccc;
+  padding: 6px 18px;
+  color: var(--rojo);
+  font-size: 12.5px;
+}
+
+/* ── NOTAS SECTION ── */
+.notas-section {
+  padding: 10px 18px 14px;
+  border-bottom: 2px solid var(--azul-borde);
+}
+
+.notas-section strong { font-size: 12px; }
+
+.notas-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 4px;
+}
+
+.notas-section ul li {
+  font-size: 12px;
+  color: #333;
+  padding: 1px 0;
+}
+
+.notas-section ul li::before { content: "– "; }
+
+/* ── TABLA DE AMORTIZACIÓN ── */
+#tabla-section { padding: 18px; }
+
+.tabla-header-row {
+  margin-bottom: 12px;
+}
+
+.tabla-titulo {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--azul-titulo);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.tabla-cliente-info {
+  font-size: 12px;
+  color: #555;
+  font-weight: 700;
+}
+
+/* ── RESUMEN CARDS ── */
+.resumen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.resumen-card {
+  background: var(--gris-tabla);
+  border: 1px solid #c8c8c8;
+  border-radius: 3px;
+  padding: 10px 12px;
+}
+
+.resumen-card.accent { border-color: var(--azul-nav); background: #e8f0fc; }
+
+.rc-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.rc-val {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--negro);
+  font-family: 'Courier New', monospace;
+}
+
+.resumen-card.accent .rc-val { color: var(--azul-nav); }
+
+/* ── TABLA ── */
+.table-wrap {
+  overflow-x: auto;
+  max-height: 420px;
+  overflow-y: auto;
+  border: 1px solid #b0b0c8;
+  border-radius: 3px;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+
+thead tr { background: var(--azul-nav); position: sticky; top: 0; z-index: 2; }
+
+thead th {
+  padding: 8px 12px;
+  text-align: right;
+  font-weight: 700;
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+
+thead th:first-child { text-align: center; }
+thead th:last-child  { border-right: none; }
+
+tbody tr { border-bottom: 1px solid #dde; }
+tbody tr:nth-child(even) { background: #f5f5fc; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #d8e8ff; }
+
+tbody td {
+  padding: 6px 12px;
+  text-align: right;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--negro);
+  border-right: 1px solid #e0e0ee;
+}
+
+tbody td:first-child {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  color: #555;
+  font-size: 11px;
+}
+
+tbody td.pago-total { font-weight: 700; color: var(--azul-nav); }
+tbody td:last-child  { border-right: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .main-panel { flex-direction: column; }
+  .right-col  { width: 100%; padding-left: 0; flex-direction: row; flex-wrap: wrap; }
+  .form-row label { width: 170px; font-size: 11px; }
+  .btn-row    { padding-left: 0; }
+  .resumen-grid { grid-template-columns: 1fr 1fr; }
+  .page-title   { font-size: 13px; }
+}
